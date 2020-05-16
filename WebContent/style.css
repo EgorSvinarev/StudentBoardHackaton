@@ -1,0 +1,107 @@
+body {
+	overflow-y: scroll;
+}
+
+.main {}
+
+.main__leftbar {
+	width: 25%;
+	height: 100vh;
+	float : left;
+}
+.leftbar__spanbox {
+	text-align: center;
+	font-size: 110%;
+	color : #475579;
+}
+.leftbar__logobox {
+	text-align: center;
+}
+
+.main__mainbar {
+	width: 75%;
+	height: 100vh;
+	float: left;
+	padding: 3%;
+	box-sizing: border-box;
+	border: 0px;
+	border-radius: 6px;
+	background-color: #eeeeee;
+}
+
+.mainbar__navbar {
+	width: 100%;
+	height: 8%;
+	padding: 1%;
+	box-sizing: border-box;
+	border: 0px;
+	background-color : #475579;
+	border-radius: 5px;
+}
+
+.navbar__search_form {
+	float : left;
+}
+
+#search_field_input {
+	height: 4%;
+
+}
+
+#search_field_btn {
+	border : 0px;
+	border-radius: 5px;
+	background-color: #ffffff;
+	height: 6%;
+	width: 70px;
+}
+
+.navbar__output_regulation_panel {
+	float : left;
+	position: absolute;
+	right: 5%;
+	color: #ffff;
+}
+
+.output_regulation_panel_btns {
+	border : 0px;
+	border-radius: 5px;
+	background-color: #ffffff;
+	height: 6%;
+	width: 70px;
+}
+
+#mainbar__table {
+	margin-top: 2%;
+	width: 100%;
+	height: 90%;
+	border: 0px;
+	border-radius: 5px;
+	background-color: #ffff;
+	overflow-y: scroll;
+}
+
+#mainbar__table::-webkit-scrollbar {
+	background-color: #ffff;
+	width: 8px;
+}
+
+#mainbar__table::-webkit-scrollbar-thumb {
+	border: 0px;
+	border-radius: 5px;
+	background-color: #475579;
+}
+
+table {
+	border: 2px solid #475579;
+	width: 100%;
+}
+
+th {
+	border: 1px solid #eeeeee;	
+}
+
+td {
+	border: 1px solid #eeeeee;
+	
+}
