@@ -11,18 +11,20 @@
 </head>
 <body>
 	<div class="main">
-		<div class="main__leftbar">
-			<div class="leftbar__logobox">
-				<img src="${pageContext.request.contextPath}/Content/logo.png" alt="ИРБИС">
+		<a href="?search=false">
+			<div class="main__leftbar">
+				<div class="leftbar__logobox">
+					<img src="${pageContext.request.contextPath}/Content/logo.png" alt="ИРБИС">
+				</div>
+				<div class="leftbar__spanbox"><span>Информация об учащихся</span></div>
 			</div>
-			<div class="leftbar__spanbox"><span>Информация об учащихся</span></div>
-		</div>
+		</a>
 		<div class="main__mainbar">
 			<div class="mainbar__navbar">
 				<div class="navbar__search_form">
-					<form action="" method="get">
+					<form action="?search=true" method="post">
 						<input id="search_field_input" type="text" name="data">
-						<input id="search_field_btn" type="button" value="Поиск">
+						<input id="search_field_btn" type="submit" value="Поиск">
 					</form>
 				</div>
 				<div class="navbar__output_regulation_panel">

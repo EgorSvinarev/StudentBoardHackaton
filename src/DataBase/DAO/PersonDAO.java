@@ -3,6 +3,8 @@ package DataBase.DAO;
 import java.sql.*;
 import DataBase.DAO.DAO;
 import DataBase.TableModel.Person;
+import DataBase.TableModel.Student;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -61,15 +63,24 @@ public class PersonDAO extends DAO {
 	}
 	
 	public Person[] getEntriesByArrayOfPrimaryKeys(int[] primaryKeys) {
-		Person[] senders = null;
+		Person[] persons = null;
 		try {
-			String sql = "SELECT * FROM person WHERE person_id = ";
-			
-			for (int i = 0; i < primaryKeys.length - 1; i++) {
-				sql = sql + "? OR person_id = ";
+			String sql = "";
+			if (primaryKeys.length > 0) {
+				for (int i = 0; i < primaryKeys.length; i++) {
+					if (i == 0) {
+						sql = "SELECT * FROM student WHERE id = ?";
+					}
+					else {
+						sql += " OR id = ?";
+					}
+				}
+				sql += ";";
 			}
-			sql = sql + "?;";
-			
+			else {
+				persons = new Person[0];
+				return persons;
+			}	
 			PreparedStatement statement = this.connection.prepareStatement(sql);
 			
 			for (int i = 0; i < primaryKeys.length; i++) {
@@ -77,15 +88,17 @@ public class PersonDAO extends DAO {
 			}
 			
 			ResultSet result = statement.executeQuery();
-			senders = new Person[primaryKeys.length];
+			persons = new Person[primaryKeys.length];
 			HashMap<Integer, Person> personsKey = new HashMap<>();
 			
 			while (result.next()) {
 				Person person = new Person();
-				person.setId(result.getInt("person_id"));
-				person.setName(result.getString("person_name"));
-				person.setSurname(result.getString("person_surname"));
-				person.setGender(result.getString("person_gender"));
+				person.setId(result.getInt("id"));
+				person.setName(result.getString("name"));
+				person.setSurname(result.getString("surname"));
+				person.setGender(result.getString("gender"));
+				person.setAge(result.getInt("age"));
+				person.setTown(result.getString("town"));
 				
 				if (personsKey.get(person.getId()) == null) {
 					personsKey.put(person.getId(), person);
@@ -93,14 +106,83 @@ public class PersonDAO extends DAO {
 			}
 			
 			for (int i = 0; i < primaryKeys.length; i++) {
-				senders[i] = personsKey.get(primaryKeys[i]);
+				persons[i] = personsKey.get(primaryKeys[i]);
 			}
 		}
 		catch(Exception ex) {
 			ex.fillInStackTrace();
 			System.out.println(ex);
 		}
-		return senders;
+		return persons;
+	}
+	
+	public Person[] getEntriesByName(String name) {
+		Person[] persons = null;
+		try {
+			String sql = "SELECT * FROM person WHERE name = ?;";
+			
+			PreparedStatement statement = this.connection.prepareStatement(sql);
+			statement.setString(1, name);
+			
+			ResultSet result = statement.executeQuery();
+			ArrayList<Person> personList = new ArrayList<>();
+			
+			while (result.next()) {
+				Person person = new Person();
+				person.setId(result.getInt("id"));
+				person.setName(result.getString("name"));
+				person.setSurname(result.getString("surname"));
+				person.setGender(result.getString("gender"));
+				person.setAge(result.getInt("age"));
+				person.setTown(result.getString("town"));
+				
+				personList.add(person);
+			}
+			
+			persons = new Person[personList.size()];
+			for (int i = 0; i < persons.length; i++) {
+				persons[i] = personList.get(i);
+			}
+		}
+		catch (Exception ex) {
+			ex.fillInStackTrace();
+			System.out.println(ex);
+		}
+		return persons;
+	}
+	
+	public Person[] getEntriesBySurname(String name) {
+		Person[] persons = null;
+		try {
+			String sql = "SELECT * FROM person WHERE surname = ?;";
+			
+			PreparedStatement statement = this.connection.prepareStatement(sql);
+			statement.setString(1, name);
+			
+			ResultSet result = statement.executeQuery();
+			ArrayList<Person> personList = new ArrayList<>();
+			
+			while (result.next()) {
+				Person person = new Person();
+				person.setId(result.getInt("id"));
+				person.setName(result.getString("name"));
+				person.setSurname(result.getString("surname"));
+				person.setGender(result.getString("gender"));
+				person.setAge(result.getInt("age"));
+				person.setTown(result.getString("town"));
+				personList.add(person);
+			}
+			
+			persons = new Person[personList.size()];
+			for (int i = 0; i < persons.length; i++) {
+				persons[i] = personList.get(i);
+			}
+		}
+		catch (Exception ex) {
+			ex.fillInStackTrace();
+			System.out.println(ex);
+		}
+		return persons;
 	}
 	
 	public Person[] getAllEntries() {

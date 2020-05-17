@@ -1,5 +1,6 @@
 elem = document.getElementById("output_regulation_panel__alphabet_sort");
 elem.onclick = function() {
+	document.getElementById("output_regulation_panel__groups_sort").innerHTML="Группам";
 	entries_fields = document.getElementsByClassName("entry_surname");
 	
 	data = [];

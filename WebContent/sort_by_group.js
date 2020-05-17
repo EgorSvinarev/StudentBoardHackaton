@@ -30,10 +30,12 @@ elem.onclick = function() {
 	if (this.value == "forward") {
 		data.sort(dynamicSort("group_id"));
 		this.value = "backward";
+		this.innerHTML = "Возр.";
 	}
 	else {
 		data.sort(dynamicSort("-group_id"));
 		this.value = "forward";
+		this.innerHTML = "Убыв.";
 	}
 	
 	entries = document.getElementsByClassName("entry"); 

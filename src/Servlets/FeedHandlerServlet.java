@@ -45,22 +45,52 @@ public class FeedHandlerServlet extends HttpServlet {
 		PersonDAO pDao = new PersonDAO(connection);
 		StudentDAO sDao = new StudentDAO(connection);
 		
-		Person[] persons= pDao.getAllEntries();
+		request.setCharacterEncoding("utf-8");
 		
-		int[] personsId = new int[persons.length];
-		for (int i = 0; i < personsId.length; i++) {
-			personsId[i] = persons[i].getId();
+		if ("true".equals(request.getParameter("search"))) {
+			String data = request.getParameter("data");
+			
+			Person[] personsFindedByName = pDao.getEntriesByName(data);
+			Person[] personsFindedBySurname = pDao.getEntriesBySurname(data);
+			Person[] persons = new Person[personsFindedByName.length + personsFindedBySurname.length];
+			
+			int[] personsId = new int[personsFindedByName.length + personsFindedBySurname.length];
+			for (int i = 0; i < personsId.length; i++) {
+				if (i < personsFindedByName.length) {
+					personsId[i] = personsFindedByName[i].getId();
+					persons[i] = personsFindedByName[i];
+				}
+				else {
+					personsId[i] = personsFindedBySurname[personsFindedByName.length - i].getId();
+					persons[i] = personsFindedBySurname[personsFindedByName.length - i];
+				}
+				
+			}
+			
+			Student[] students = sDao.getEntriesByArrayOfPrimaryKeys(personsId);
+			
+			request.setAttribute("persons", persons);
+			request.setAttribute("students", students);
+			
 		}
-		
-		Student[] students = sDao.getEntriesByArrayOfPrimaryKeys(personsId);
+		else {
+			Person[] persons= pDao.getAllEntries();
+			
+			int[] personsId = new int[persons.length];
+			for (int i = 0; i < personsId.length; i++) {
+				personsId[i] = persons[i].getId();
+			}
+			
+			Student[] students = sDao.getEntriesByArrayOfPrimaryKeys(personsId);
+			
+			request.setAttribute("persons", persons);
+			request.setAttribute("students", students);
+		}
 		
 		synchronized(pool) {
 			pool.putConnection(connection);
 			ctx.setAttribute("ConnectionPool", pool);
 		}
-		
-		request.setAttribute("persons", persons);
-		request.setAttribute("students", students);
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
