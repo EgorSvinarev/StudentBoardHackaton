@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="main">
-		<a href="?search=false">
+		<a href="${pageContext.request.contextPath}">
 			<div class="main__leftbar">
 				<div class="leftbar__logobox">
 					<img src="${pageContext.request.contextPath}/Content/logo.png" alt="ИРБИС">

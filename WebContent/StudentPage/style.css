@@ -1,36 +1,120 @@
 .main {
-	height: 100vh;
-	box-sizing: border-box;
-	padding-left: 20%;
-	padding-right: 20%;
-	padding-top: 10%;
-	padding-bottom: 10%;
+	
 }
 
-.main__infobar {
-	height: 100%;
-	width: 100%;
+.main__leftbar {
+	width: 25%;
+	height: 100vh;
+	float : left;
+}
+
+.leftbar__spanbox {
+	text-align: center;
+	font-size: 110%;
+	color : #475579;
+}
+.leftbar__logobox {
+	text-align: center;
+}
+
+.main__rightbar {
+	width: 75%;
+	height: 100vh;
+	float: left;
+	padding: 1%;
+	box-sizing: border-box;
 	background-color: #475579;
-	color: #ffffff;
+}
+
+.rightbar__top {
+	width: 100%;
+	height: 40%;
+}
+
+.top__person_info {
+	width: 55%;
+	height: 100%;
+	border: 1px solid;
+	border-color: #475579;
+	border-radius: 8px;
+	background-color: #eeeeee;
+	float: left;
+	
+}
+
+
+.scrollable {
+	overflow-y: scroll;
+}
+
+.scrollable::-webkit-scrollbar {
+	width: 5px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+	background-color: #939CE3;
+	border: 0px;
+	border-radius: 8px; 
+}
+
+.rightbar__info_field {
+	line-height: 200%;
+	color: #172482;
+	padding-left: 10%;
+	padding-right: 20%;
+}
+
+.top__student_info {
+	width: 42%;
+	height: 100%;
+	margin-left: 2%;
+	border: 1px solid;
+	border-color: #475579;
+	border-radius: 8px;
+	background-color: #eeeeee;
+	float: left;
+}
+
+.rightbar__bottom {
+	width: 100%;
+	height: 45%;
+	margin-top: 2%;
+}
+
+.bottom__biography {
+	width: 100%;
+	height: 100%;
+	border: 1px solid;
+	border-color: #475579;
+	border-radius: 8px;
+	background-color: #eeeeee;
+}
+
+.rightbar__header {
+	text-align: center; 
+	color: #172482; 
+	font-size: 120%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+} 
+
+
+
+.rightbar__button_panel {
+	width: 100%;
+	height: 11%;
+	box-sizing: border-box;
+	margin-top: 2%;
+	padding-left: 40%;
+	padding-right: 40%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+#button_panel__change_btn {
+	width: 100%;
+	height: 100%;
 	border: 0px;
 	border-radius: 8px;
-	font-size: 150%;
-}
-
-.infobar__leftside {
-	height: 100%;
-	width: 50%;
-	float: left;
-	box-sizing: border-box;
-	line-height: 180%;
-	padding: 5%;
-}
-
-.infobar__rightside {
-	height: 100%;
-	width: 50%;
-	float: left;
-	box-sizing: border-box;
-	line-height: 300%;
-	padding: 5%;	
+	color: #475579;
 }
