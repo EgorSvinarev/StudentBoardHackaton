@@ -137,4 +137,20 @@ public class StudentDAO extends DAO{
 		return students;
 	}
 	
+	public void updateEntryById(int id, Student student) {
+		try {
+			String sql = "UPDATE student SET group_id = ? WHERE id = ?";
+			
+			PreparedStatement statement = this.connection.prepareStatement(sql);
+			statement.setString(1, student.getGroupId());
+			statement.setInt(2, student.getId());
+			
+			statement.executeUpdate();
+		}
+		catch (Exception ex) {
+			ex.fillInStackTrace();
+			System.out.println(ex);
+		}
+	}
+	
 }

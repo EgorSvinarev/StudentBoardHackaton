@@ -24,20 +24,20 @@
 				<div class="leftbar__spanbox"><span>Информация об учащихся</span></div>
 			</div>
 		</a>
-		<div class="main__rightbar">
+		<div class="main__rightbar" id="main__rightbar">
 			<div class="rightbar__top">
 				<div class="top__person_info scrollable">
 					<div class="rightbar__header">Личная инфомарция</div>
-					<span class="rightbar__info_field">Имя: <%=person.getName() %></span><br>
-					<span class="rightbar__info_field">Фамилия: <%=person.getSurname() %></span><br>
-					<span class="rightbar__info_field">Возраст: <%=person.getAge() %></span><br>
-					<span class="rightbar__info_field">Пол: <%=person.getGender() %></span><br>
-					<span class="rightbar__info_field">Город: <%=person.getTown() %></span><br>
+					<div class="rightbar__info_field" id="name">Имя: <span class="info_field__info"><%=person.getName() %></span></div>
+					<div class="rightbar__info_field" id="surname">Фамилия: <span class="info_field__info"><%=person.getSurname() %></span></div>
+					<div class="rightbar__info_field" id="age">Возраст: <span class="info_field__info"><%=person.getAge() %></span></div>
+					<div class="rightbar__info_field" id="gender">Пол: <span class="info_field__info"><%=person.getGender() %></span></div>
+					<div class="rightbar__info_field" id="town">Город: <span class="info_field__info"><%=person.getTown() %></span></div>
 				</div>
 				<div class="top__student_info scrollable">
 					<div class="rightbar__header">Инфомарция о студенте</div>
-					<span class="rightbar__info_field">Id студента: <%=person.getId() %></span><br>
-					<span class="rightbar__info_field">Id группы: <%=student.getGroupId() %></span><br>
+					<div class="rightbar__info_field" id="id">Id студента: <span class="info_field__info"><%=student.getId() %></span></div>
+					<div class="rightbar__info_field" id="group_id">Id группы: <span class="info_field__info"><%=student.getGroupId() %></span></div>
 				</div>
 			</div>
 			<div class="rightbar__bottom">
@@ -46,9 +46,15 @@
 				</div>
 			</div>
 			<div class="rightbar__button_panel">
-				<button id="button_panel__change_btn">Редактировать</button>
+				<button id="button_panel__edit_btn" class="button_panel__buttons" type="button">Редактировать</button>
+				<button id="button_panel__change_save_btn" class="button_panel__buttons" type="button">Сохранить</button>
+				<button id="button_panel__cancel_editing_btn" class="button_panel__buttons" type="button">Отмена</button>
 			</div>
 		</div>
+	</div>
+
+	<script src="${pageContext.request.contextPath}/StudentPage/cancel_editing.js"></script>
+	<script src="${pageContext.request.contextPath}/StudentPage/handle_editing.js"></script>
 	</div>
 
 </body>

@@ -26,6 +26,11 @@
 	background-color: #475579;
 }
 
+.rightbar_form {
+	height: 85%;
+	width: 100%;
+}
+
 .rightbar__top {
 	width: 100%;
 	height: 40%;
@@ -42,7 +47,6 @@
 	
 }
 
-
 .scrollable {
 	overflow-y: scroll;
 }
@@ -58,7 +62,8 @@
 }
 
 .rightbar__info_field {
-	line-height: 200%;
+	margin-top: 2%;
+	margin-bottom: 2%; 
 	color: #172482;
 	padding-left: 10%;
 	padding-right: 20%;
@@ -103,18 +108,33 @@
 .rightbar__button_panel {
 	width: 100%;
 	height: 11%;
-	box-sizing: border-box;
 	margin-top: 2%;
-	padding-left: 40%;
-	padding-right: 40%;
+	box-sizing: border-box;
+	padding-left: 20%;
+	padding-right: 20%;
 	padding-top: 2%;
 	padding-bottom: 2%;
 }
 
-#button_panel__change_btn {
-	width: 100%;
+.button_panel__buttons {
+	width: 110px;
 	height: 100%;
 	border: 0px;
 	border-radius: 8px;
 	color: #475579;
+	float: left;
+}
+
+#button_panel__change_save_btn {
+	left: 0px;
+	display: none;
+}
+
+#button_panel__cancel_editing_btn {
+	right: 0px;
+	display: none;
+}
+
+.form__inputs {
+	width: 30%;
 }

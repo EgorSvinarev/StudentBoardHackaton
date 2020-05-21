@@ -217,5 +217,24 @@ public class PersonDAO extends DAO {
 		return persons;
 	}
 	
+	public void updateEntryById(int id, Person person) {
+		try {
+			String sql = "UPDATE person SET name = ?, surname = ?, gender = ?, age = ?, town = ? WHERE id = ?";
+			
+			PreparedStatement statement = this.connection.prepareStatement(sql);
+			statement.setString(1, person.getName());
+			statement.setString(2, person.getSurname());
+			statement.setString(3, person.getGender());
+			statement.setInt(4, person.getAge());
+			statement.setString(5, person.getTown());
+			statement.setInt(6, person.getId());
+			
+			statement.executeUpdate();
+		}
+		catch (Exception ex) {
+			ex.fillInStackTrace();
+			System.out.println(ex);
+		}
+	}
 	
 }
